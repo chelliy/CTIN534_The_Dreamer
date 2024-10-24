@@ -130,11 +130,12 @@ public class FirstPersonController : MonoBehaviour
     private float timer = 0;
 
     #endregion
-    public GameObject realityLocation;
-    public GameObject dreamLocation;
+    //public GameObject realityLocation;
+    //public GameObject dreamLocation;
 
     private Vector3 lastUpdateLocation;
     private Vector3 currentUpdateLocation;
+
 
     private bool teleported = false;
 
@@ -389,15 +390,15 @@ public class FirstPersonController : MonoBehaviour
 
         Vector3 difference = currentUpdateLocation - lastUpdateLocation;
 
-        realityLocation.transform.position = new Vector3(
-            realityLocation.transform.position.x + difference.x,
-            realityLocation.transform.position.y, 
-            realityLocation.transform.position.z + difference.z);
+        //realityLocation.transform.position = new Vector3(
+        //    realityLocation.transform.position.x + difference.x,
+        //    realityLocation.transform.position.y, 
+        //    realityLocation.transform.position.z + difference.z);
 
-        dreamLocation.transform.position = new Vector3(
-            dreamLocation.transform.position.x + difference.x,
-            dreamLocation.transform.position.y,
-            dreamLocation.transform.position.z + difference.z);
+        //dreamLocation.transform.position = new Vector3(
+        //    dreamLocation.transform.position.x + difference.x,
+        //    dreamLocation.transform.position.y,
+        //    dreamLocation.transform.position.z + difference.z);
 
 
     }
@@ -774,9 +775,9 @@ public class FirstPersonController : MonoBehaviour
 
 
 
-        fpc.realityLocation = (GameObject)EditorGUILayout.ObjectField(new GUIContent("realityLocation", "realityLocation"), fpc.realityLocation, typeof(GameObject), true);
-        fpc.dreamLocation = (GameObject)EditorGUILayout.ObjectField(new GUIContent("dreamLocation", "dreamLocation"), fpc.dreamLocation, typeof(GameObject), true);
-        GUI.enabled = true;
+        //fpc.realityLocation = (GameObject)EditorGUILayout.ObjectField(new GUIContent("realityLocation", "realityLocation"), fpc.realityLocation, typeof(GameObject), true);
+        //fpc.dreamLocation = (GameObject)EditorGUILayout.ObjectField(new GUIContent("dreamLocation", "dreamLocation"), fpc.dreamLocation, typeof(GameObject), true);
+        //GUI.enabled = true;
 
 
 

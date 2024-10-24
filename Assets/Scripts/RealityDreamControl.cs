@@ -9,9 +9,13 @@ public class RealityDreamControl : MonoBehaviour
     public static RealityDreamControl realityDreamControl;
     public bool canSwitchBetweenRD = true;
     private bool inReality = true;
-    public GameObject realityPosition;
-    public GameObject dreamPosition;
+    //public GameObject realityPosition;
+    //public GameObject dreamPosition;
     public GameObject player;
+
+    public String Reality;
+    public String Dream;
+
 
     void Start()
     {
@@ -25,8 +29,9 @@ public class RealityDreamControl : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Mouse1))
             {
+                Debug.Log("Received");
                 SwitchRealityDream();
-                player.GetComponent<FirstPersonController>().Teleported();
+                //player.GetComponent<FirstPersonController>().Teleported();
             }
         }
     }
@@ -40,11 +45,19 @@ public class RealityDreamControl : MonoBehaviour
         }
         if (inReality)
         {
-            player.transform.position = realityPosition.transform.position;
+            //player.transform.position = realityPosition.transform.position;
+            Camera.main.cullingMask &= ~(1 << LayerMask.NameToLayer(Dream));
+            Camera.main.cullingMask |= 1 << LayerMask.NameToLayer(Reality);
+
+            player.GetComponent<Rigidbody>().excludeLayers = 1 << LayerMask.NameToLayer(Dream);
         }
         else
         {
-            player.transform.position = dreamPosition.transform.position;
+            //player.transform.position = dreamPosition.transform.position;
+            Camera.main.cullingMask &= ~(1 << LayerMask.NameToLayer(Reality));
+            Camera.main.cullingMask |= 1 << LayerMask.NameToLayer(Dream);
+
+            player.GetComponent<Rigidbody>().excludeLayers = 1 << LayerMask.NameToLayer(Reality);
         }
     }
 
