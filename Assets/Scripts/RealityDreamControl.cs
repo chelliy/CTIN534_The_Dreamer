@@ -8,6 +8,8 @@ public class RealityDreamControl : MonoBehaviour
     // Start is called before the first frame update
     public static RealityDreamControl realityDreamControl;
     public bool canSwitchBetweenRD = true;
+    public bool automaticSwitch = true;
+    [SerializeField] private float automaticSwitchTime = 3.0f; 
     private bool inReality = true;
     //public GameObject realityPosition;
     //public GameObject dreamPosition;
@@ -20,6 +22,10 @@ public class RealityDreamControl : MonoBehaviour
     void Start()
     {
         realityDreamControl = this;
+        if (automaticSwitch)
+        {
+            InvokeRepeating("SwitchRealityDream", 5.0f, automaticSwitchTime);
+        }
     }
 
     // Update is called once per frame
@@ -34,6 +40,7 @@ public class RealityDreamControl : MonoBehaviour
                 //player.GetComponent<FirstPersonController>().Teleported();
             }
         }
+
     }
 
     public void SwitchRealityDream()
@@ -64,5 +71,10 @@ public class RealityDreamControl : MonoBehaviour
     public void SetSwitchable(bool switchable)
     {
         canSwitchBetweenRD = switchable;
+    }
+
+    public void SetAutomatic(bool automatic)
+    {
+        automaticSwitch = automatic; 
     }
 }
