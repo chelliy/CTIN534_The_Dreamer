@@ -20,6 +20,7 @@ public class PickUpScript : MonoBehaviour
     //example below 
     FirstPersonController firstPersonControllerScript;
     float originalvalue = 0f;
+    int heldOriginLayer = 0;
 
     public static PickUpScript pickUpControl;
     void Start()
@@ -76,6 +77,7 @@ public class PickUpScript : MonoBehaviour
             heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
             heldObjRb.isKinematic = true;
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
+            heldOriginLayer = heldObj.layer;
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
@@ -86,7 +88,7 @@ public class PickUpScript : MonoBehaviour
     {
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.layer = 0; //object assigned back to default layer
+        heldObj.layer = heldOriginLayer; //object assigned back to default layer
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
         heldObj = null; //undefine game object
@@ -124,7 +126,7 @@ public class PickUpScript : MonoBehaviour
     {
         //same as drop function, but add force to object before undefining it
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.layer = 0;
+        heldObj.layer = heldOriginLayer;
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null;
         heldObjRb.AddForce(transform.forward * throwForce);
