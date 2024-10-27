@@ -27,13 +27,13 @@ public class InteractableObj : MonoBehaviour
 
     public void TeleportCheck()
     {
-        if (!realityObj) 
-        {
-            if (onHold)
-            {
-                PickUpScript.pickUpControl.DropObject();
-                onHold = false;
-            }
-        }
+        //if (!realityObj) 
+        //{
+        //    if (onHold)
+        //    {
+        //        PickUpScript.pickUpControl.DropObject();
+        //        onHold = false;
+        //    }
+        //}
     }
 }
