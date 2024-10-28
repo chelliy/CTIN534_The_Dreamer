@@ -24,23 +24,13 @@ public class RealityDreamControl : MonoBehaviour
         realityDreamControl = this;
         if (automaticSwitch)
         {
-            InvokeRepeating("SwitchRealityDream", 5.0f, automaticSwitchTime);
+            InvokeRepeating("SwitchRealityDream", automaticSwitchTime, automaticSwitchTime);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canSwitchBetweenRD)
-        {
-            if (Input.GetKeyUp(KeyCode.Mouse1))
-            {
-                Debug.Log("Received");
-                SwitchRealityDream();
-                //player.GetComponent<FirstPersonController>().Teleported();
-            }
-        }
-
     }
 
     public void SwitchRealityDream()
