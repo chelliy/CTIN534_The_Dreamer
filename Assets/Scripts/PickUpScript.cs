@@ -22,6 +22,9 @@ public class PickUpScript : MonoBehaviour
     float originalvalue = 0f;
     int heldOriginLayer = 0;
 
+    bool foundPickable = false;
+    GameObject potentialHeldObj = null;
+
     public static PickUpScript pickUpControl;
     void Start()
     {
@@ -32,21 +35,42 @@ public class PickUpScript : MonoBehaviour
     }
     void Update()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+        {
+            if (heldObj == null)
+            {
+                //make sure pickup tag is attached
+                if (hit.transform.gameObject.tag == "canPickUp")
+                {
+                    //pass in object hit into the PickUpObject function
+                    potentialHeldObj = hit.transform.gameObject;
+                    potentialHeldObj.GetComponent<Outline>().enabled = true;
+                    foundPickable = true;
+
+                }
+                else
+                {
+                    if (foundPickable)
+                    {
+                        potentialHeldObj.GetComponent<Outline>().enabled = false;
+                        potentialHeldObj = null;
+                        foundPickable = false;
+                    }
+                }
+            }
+        }
         if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
         {
             if (heldObj == null) //if currently not holding anything
             {
                 //perform raycast to check if player is looking at object within pickuprange
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+                if (foundPickable)
                 {
-                    //make sure pickup tag is attached
-                    if (hit.transform.gameObject.tag == "canPickUp")
-                    {
-                        //pass in object hit into the PickUpObject function
-                        PickUpObject(hit.transform.gameObject);
-                    }
+                    //pass in object hit into the PickUpObject function
+                    PickUpObject(potentialHeldObj);
                 }
+                
             }
             else
             {
@@ -82,6 +106,10 @@ public class PickUpScript : MonoBehaviour
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
             pickUpObj.GetComponent<InteractableObj>().SetOnHoldStatus(true);
+
+            potentialHeldObj.GetComponent<Outline>().enabled = false;
+            potentialHeldObj = null;
+            foundPickable = false;
         }
     }
     public void DropObject()
