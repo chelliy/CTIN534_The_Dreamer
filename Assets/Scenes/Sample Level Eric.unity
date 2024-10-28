@@ -3487,7 +3487,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1858469181}
   - {fileID: 470462688}
   m_Father: {fileID: 166785036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15739,6 +15738,10 @@ PrefabInstance:
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3538237922812703390, guid: 2b4972f752a859846a3bef5950cb8df4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538237922812703390, guid: 2b4972f752a859846a3bef5950cb8df4, type: 3}
       propertyPath: m_SelectedEditorRenderState
       value: 2
       objectReference: {fileID: 0}
@@ -15790,17 +15793,25 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 973769025}
+    - target: {fileID: 5632078814286573248, guid: 2b4972f752a859846a3bef5950cb8df4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6134180494357904739, guid: 2b4972f752a859846a3bef5950cb8df4, type: 3}
       propertyPath: button
       value: 
       objectReference: {fileID: 2092160739}
+    - target: {fileID: 6134180494357904739, guid: 2b4972f752a859846a3bef5950cb8df4, type: 3}
+      propertyPath: special
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7818273276327855566, guid: 2b4972f752a859846a3bef5950cb8df4, type: 3}
       propertyPath: m_Name
       value: Dream Door (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7818273276327855566, guid: 2b4972f752a859846a3bef5950cb8df4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16127,7 +16138,7 @@ Transform:
   m_GameObject: {fileID: 828733686}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 131.12, y: 2.58, z: 15.36}
+  m_LocalPosition: {x: 0, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33495,7 +33506,7 @@ RectTransform:
   m_Children:
   - {fileID: 1608915976}
   - {fileID: 2062462402}
-  m_Father: {fileID: 109036961}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -37041,6 +37052,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 810405522}
   - {fileID: 1073677631}
+  - {fileID: 1858469181}
   - {fileID: 828733692}
   - {fileID: 299685498}
   - {fileID: 72086537}
