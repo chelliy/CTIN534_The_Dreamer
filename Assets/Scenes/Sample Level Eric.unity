@@ -8243,29 +8243,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &330882290 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 650142939414619387, guid: 9bbe0178f7824af409fb7325a0732ef1, type: 3}
-  m_PrefabInstance: {fileID: 627789803}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &330882297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330882290}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 1, g: 1, b: 0, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!43 &350158947
 Mesh:
   m_ObjectHideFlags: 0
@@ -13679,21 +13656,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7824477926866708882, guid: 9bbe0178f7824af409fb7325a0732ef1, type: 3}
-      propertyPath: realityObj
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8073096471611823631, guid: 9bbe0178f7824af409fb7325a0732ef1, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 650142939414619387, guid: 9bbe0178f7824af409fb7325a0732ef1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 330882297}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bbe0178f7824af409fb7325a0732ef1, type: 3}
 --- !u!1 &649650262
 GameObject:
@@ -26958,17 +26924,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7839217905459617022, guid: d60a2b15cfe2e12428755801d90d2bff, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1569184367923031562, guid: d60a2b15cfe2e12428755801d90d2bff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1808797765}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d60a2b15cfe2e12428755801d90d2bff, type: 3}
 --- !u!43 &1561480660
 Mesh:
@@ -32902,29 +32861,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1 &1808797759 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1569184367923031562, guid: d60a2b15cfe2e12428755801d90d2bff, type: 3}
-  m_PrefabInstance: {fileID: 1531523760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1808797765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1808797759}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 1, g: 1, b: 0, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1812829021
 GameObject:
   m_ObjectHideFlags: 0

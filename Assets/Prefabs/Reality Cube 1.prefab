@@ -8,17 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1321009976783101881, guid: 7a5efe93be006614fac997f5aeda9000, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 5312920264888889864, guid: 7a5efe93be006614fac997f5aeda9000, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 17.345215
       objectReference: {fileID: 0}
     - target: {fileID: 5312920264888889864, guid: 7a5efe93be006614fac997f5aeda9000, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.4824009
       objectReference: {fileID: 0}
     - target: {fileID: 5312920264888889864, guid: 7a5efe93be006614fac997f5aeda9000, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.41442108
       objectReference: {fileID: 0}
     - target: {fileID: 5312920264888889864, guid: 7a5efe93be006614fac997f5aeda9000, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,5 +67,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7735363831954664781, guid: 7a5efe93be006614fac997f5aeda9000, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7773019041690192087}
   m_SourcePrefab: {fileID: 100100000, guid: 7a5efe93be006614fac997f5aeda9000, type: 3}
+--- !u!1 &1569184367923031562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7735363831954664781, guid: 7a5efe93be006614fac997f5aeda9000, type: 3}
+  m_PrefabInstance: {fileID: 9124104508608742215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7773019041690192087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569184367923031562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
