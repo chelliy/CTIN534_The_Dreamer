@@ -36,7 +36,8 @@ public class PickUpScript : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+        bool result = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange, 1 << LayerMask.NameToLayer("RealitySide") | 1 << LayerMask.NameToLayer("DreamSide"));
+        if (result)
         {
             if (heldObj == null)
             {
@@ -59,6 +60,16 @@ public class PickUpScript : MonoBehaviour
                     }
                 }
             }
+        }
+        else
+        {
+            if (foundPickable)
+            {
+                potentialHeldObj.GetComponent<Outline>().enabled = false;
+                potentialHeldObj = null;
+                foundPickable = false;
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
         {
