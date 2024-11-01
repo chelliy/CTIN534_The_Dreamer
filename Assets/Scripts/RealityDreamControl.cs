@@ -22,15 +22,16 @@ public class RealityDreamControl : MonoBehaviour
     void Start()
     {
         realityDreamControl = this;
-        if (automaticSwitch)
-        {
-            InvokeRepeating("SwitchRealityDream", automaticSwitchTime, automaticSwitchTime);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        InvokeRepeating("SwitchRealityDream", automaticSwitchTime, automaticSwitchTime);
     }
 
     public void SwitchRealityDream()
