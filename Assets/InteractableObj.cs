@@ -9,9 +9,11 @@ public class InteractableObj : MonoBehaviour
     public bool realityObj = false;
     private bool onHold = false;
 
+    public Vector3 orginalPosition;
+
     void Start()
     {
-        
+        orginalPosition = this.transform.position;
     }
 
     // Update is called once per frame
@@ -35,5 +37,10 @@ public class InteractableObj : MonoBehaviour
         //        onHold = false;
         //    }
         //}
+    }
+
+    public void ResetPosition()
+    {
+        this.transform.position = orginalPosition;
     }
 }

@@ -18,20 +18,40 @@ public class RealityDreamControl : MonoBehaviour
     public String Reality;
     public String Dream;
 
+    public bool switchStart = false;
+    private float switchTimer;
+
 
     void Start()
     {
         realityDreamControl = this;
+        switchTimer = automaticSwitchTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if (switchStart)
+        //{
+        //    if(switchTimer > 0f)
+        //    {
+        //        switchTimer -= Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        switchTimer = automaticSwitchTime;
+        //    }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        InvokeRepeating("SwitchRealityDream", automaticSwitchTime, automaticSwitchTime);
+        if (!switchStart)
+        {
+            InvokeRepeating("SwitchRealityDream", automaticSwitchTime, automaticSwitchTime);
+            AudioManager.instance.PlayHint();
+            switchStart = true;
+        }
     }
 
     public void SwitchRealityDream()

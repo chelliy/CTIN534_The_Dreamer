@@ -182,9 +182,12 @@ public class PickUpScript : MonoBehaviour
         //if the array length is greater than 1, meaning it has hit more than just the object we are carrying
         if (hits.Length > 1)
         {
-            //change object position to camera position 
-            heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //offset slightly downward to stop object dropping above player 
-            //if your player is small, change the -0.5f to a smaller number (in magnitude) ie: -0.1f
+            if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), clipRange, 1 << LayerMask.NameToLayer("Stasis")))
+            {
+                //change object position to camera position 
+                heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //offset slightly downward to stop object dropping above player 
+                                                                                              //if your player is small, change the -0.5f to a smaller number (in magnitude) ie: -0.1f
+            }
         }
     }
 }
