@@ -20,7 +20,7 @@ public class StasisZone : MonoBehaviour
     {
         if (other.transform.gameObject.CompareTag("canPickUp"))
         {
-            other.transform.gameObject.layer = LayerMask.NameToLayer("Default");
+            other.transform.gameObject.layer = LayerMask.NameToLayer("ConstantPickUp");
             other.excludeLayers = 1 << LayerMask.NameToLayer("Nothing");
             Debug.Log("called");
         }

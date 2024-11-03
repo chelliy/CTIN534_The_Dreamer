@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 594503642378703679}
   - component: {fileID: 5116732725771388876}
   - component: {fileID: 8808908051621859872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stasis Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

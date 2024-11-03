@@ -35,10 +35,11 @@ public class PickUpScript : MonoBehaviour
     }
     void Update()
     {
-        RaycastHit hit;
-        bool result = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange, 1 << LayerMask.NameToLayer("RealitySide") | 1 << LayerMask.NameToLayer("DreamSide"));
-        if (result)
+        RaycastHit [] hits = Physics.RaycastAll(transform.position, transform.TransformDirection(Vector3.forward), pickUpRange, 1 << LayerMask.NameToLayer("RealitySide") | 1 << LayerMask.NameToLayer("DreamSide") | 1 << LayerMask.NameToLayer("ConstantPickUp"));
+        
+        if (hits.Length > 0)
         {
+            RaycastHit hit = hits[0];
             if (heldObj == null)
             {
                 //make sure pickup tag is attached
