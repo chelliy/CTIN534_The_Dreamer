@@ -23,4 +23,8 @@ public class AudioManager : MonoBehaviour
     {
         hint.PlayDelayed(0.5f);
     }
+    public void StopHint()
+    {
+        hint.Stop();
+    }
 }

@@ -6,21 +6,30 @@ using UnityEngine.Events;
 public class BoxButton : MonoBehaviour
 {
     public bool isPressed = false;
-    public UnityEvent buttonEvent; 
+    public UnityEvent buttonEvent;
+    public int counter = 0;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player" || other.tag == "canPickUp")
         {
+            counter++;
             isPressed = true;
-            buttonEvent.Invoke(); 
+            if (counter <= 1)
+            {
+                buttonEvent.Invoke();
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" || other.tag == "canPickUp")
         {
-            isPressed = false;
-            buttonEvent.Invoke(); 
+            counter--;
+            if(counter <= 0)
+            {
+                isPressed = false;
+                buttonEvent.Invoke(); 
+            }
         }
     }
 }

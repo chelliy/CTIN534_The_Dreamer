@@ -2801,7 +2801,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1911
+    m_Bits: 3959
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2836,7 +2836,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -3094,6 +3094,7 @@ GameObject:
   - component: {fileID: 127861194}
   - component: {fileID: 127861193}
   - component: {fileID: 127861192}
+  - component: {fileID: 127861195}
   m_Layer: 7
   m_Name: Dream Door Room 7
   m_TagString: Untagged
@@ -3181,6 +3182,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127861190}
   m_Mesh: {fileID: 4087302093901549593, guid: 30f2e80e19ae52449809613635a06ebe, type: 3}
+--- !u!65 &127861195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127861190}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67091644, y: 1.470625, z: 0.1528115}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0}
 --- !u!1 &151984877
 GameObject:
   m_ObjectHideFlags: 0
@@ -6628,6 +6650,7 @@ GameObject:
   - component: {fileID: 414721608}
   - component: {fileID: 414721610}
   - component: {fileID: 414721609}
+  - component: {fileID: 414721611}
   m_Layer: 8
   m_Name: Reality Dummy Door
   m_TagString: Untagged
@@ -6700,6 +6723,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414721607}
   m_Mesh: {fileID: 4087302093901549593, guid: 30f2e80e19ae52449809613635a06ebe, type: 3}
+--- !u!65 &414721611
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414721607}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67091644, y: 1.470625, z: 0.1528115}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0}
 --- !u!1 &431062553
 GameObject:
   m_ObjectHideFlags: 0
@@ -10559,6 +10603,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691361261}
   m_Mesh: {fileID: -265170899028721638, guid: c839636a99e7e724c995b6e9863f39bf, type: 3}
+--- !u!1 &692127884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 692127887}
+  - component: {fileID: 692127888}
+  m_Layer: 0
+  m_Name: Post-process Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &692127887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692127884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2984936, y: 17.781305, z: -6.6005154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &692127888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692127884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 0421e6df5d2cc5440b804d264cebf43a, type: 2}
 --- !u!1 &702261057
 GameObject:
   m_ObjectHideFlags: 0
@@ -12015,7 +12108,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: adcac75087a17704ca6c0c3b15bc3aa5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14228,6 +14321,7 @@ GameObject:
   - component: {fileID: 982494538}
   - component: {fileID: 982494537}
   - component: {fileID: 982494536}
+  - component: {fileID: 982494539}
   m_Layer: 7
   m_Name: Dream Door Room 6
   m_TagString: Untagged
@@ -14315,6 +14409,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982494534}
   m_Mesh: {fileID: 4087302093901549593, guid: 30f2e80e19ae52449809613635a06ebe, type: 3}
+--- !u!65 &982494539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982494534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67091644, y: 1.470625, z: 0.1528115}
+  m_Center: {x: 0, y: 0.00000011920929, z: -0.0000076293945}
 --- !u!1 &985823665
 GameObject:
   m_ObjectHideFlags: 0
@@ -15647,6 +15762,7 @@ GameObject:
   - component: {fileID: 1061201040}
   - component: {fileID: 1061201042}
   - component: {fileID: 1061201041}
+  - component: {fileID: 1061201043}
   m_Layer: 8
   m_Name: Reality Dummy Door
   m_TagString: Untagged
@@ -15719,6 +15835,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1061201039}
   m_Mesh: {fileID: 4087302093901549593, guid: 30f2e80e19ae52449809613635a06ebe, type: 3}
+--- !u!65 &1061201043
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061201039}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67091644, y: 1.470625, z: 0.1528115}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0}
 --- !u!1 &1065628072
 GameObject:
   m_ObjectHideFlags: 0
@@ -16007,9 +16144,11 @@ MonoBehaviour:
   canSwitchBetweenRD: 1
   automaticSwitch: 1
   automaticSwitchTime: 3
+  inReality: 1
   player: {fileID: 828733686}
   Reality: RealitySide
   Dream: DreamSide
+  PostProcess: {fileID: 692127884}
   switchStart: 0
 --- !u!4 &1073677631
 Transform:
@@ -16058,6 +16197,7 @@ GameObject:
   - component: {fileID: 1081542793}
   - component: {fileID: 1081542795}
   - component: {fileID: 1081542794}
+  - component: {fileID: 1081542796}
   m_Layer: 8
   m_Name: Reality Dummy Door
   m_TagString: Untagged
@@ -16130,6 +16270,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081542792}
   m_Mesh: {fileID: 4087302093901549593, guid: 30f2e80e19ae52449809613635a06ebe, type: 3}
+--- !u!65 &1081542796
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081542792}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67091644, y: 1.470625, z: 0.1528115}
+  m_Center: {x: 0, y: 0.00000011920929, z: -0.0000076293945}
 --- !u!4 &1087517268 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7215758617064648537, guid: bfe9c6a5299364147b99e4d77d346aeb, type: 3}
@@ -18562,6 +18723,7 @@ MonoBehaviour:
   End_Wall: {fileID: 854607237}
   Cover: {fileID: 789597043}
   counts: -10
+  reality: 1
 --- !u!1 &1329527068
 GameObject:
   m_ObjectHideFlags: 0
@@ -18574,6 +18736,7 @@ GameObject:
   - component: {fileID: 1329527071}
   - component: {fileID: 1329527070}
   - component: {fileID: 1329527069}
+  - component: {fileID: 1329527073}
   m_Layer: 7
   m_Name: Dream Door Room 8
   m_TagString: Untagged
@@ -18661,6 +18824,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1201170365}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1329527073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329527068}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67091644, y: 1.470625, z: 0.1528115}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0}
 --- !u!1 &1371247262
 GameObject:
   m_ObjectHideFlags: 0
@@ -28832,6 +29016,7 @@ MonoBehaviour:
   End_Wall: {fileID: 1878243024}
   Cover: {fileID: 789597043}
   counts: -10
+  reality: 0
 --- !u!65 &2140272692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29919,6 +30104,7 @@ GameObject:
   - component: {fileID: 1134045465763031545}
   - component: {fileID: 7228098506659868932}
   - component: {fileID: 8321952546428906237}
+  - component: {fileID: 8321952546428906238}
   m_Layer: 0
   m_Name: Door Room 5
   m_TagString: Untagged
@@ -29940,6 +30126,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 1278505182}
   special: 0
+--- !u!65 &8321952546428906238
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321952546428906236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67091644, y: 1.470625, z: 0.1528115}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0}
 --- !u!1 &8504180441417751943
 GameObject:
   m_ObjectHideFlags: 0
@@ -30034,3 +30241,4 @@ SceneRoots:
   - {fileID: 1897961638}
   - {fileID: 765031801}
   - {fileID: 2055990693}
+  - {fileID: 692127887}
