@@ -17,7 +17,7 @@ public class TestInteract2 : MonoBehaviour
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity, 1<<LayerMask.NameToLayer("ConstantPickUp"));
+        RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity, 1<<LayerMask.NameToLayer("Interactable"));
         if(hits.Length > 0)
         {
             RaycastHit current = hits[hits.Length -1];
