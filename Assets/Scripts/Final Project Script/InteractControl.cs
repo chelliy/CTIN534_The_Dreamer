@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class InteractControl : MonoBehaviour
 {
@@ -34,6 +35,14 @@ public class InteractControl : MonoBehaviour
     public float keepBoxUI_YPos_InPercentage = 0.1f; // Y position percentage of UI box
     public float keepBoxUI_WidthPercentage = 0.3f; // Width percentage of UI box
     public float keepBoxUI_HeightPercentage = 0.3f; // Height percentage of UI box
+
+    public float trashBoxUI_XPos_InPercentage = 0.6f; // X position percentage of UI box
+    public float trashBoxUI_YPos_InPercentage = 0.1f; // Y position percentage of UI box
+    public float trashBoxUI_WidthPercentage = 0.3f; // Width percentage of UI box
+    public float trashBoxUI_HeightPercentage = 0.3f; // Height percentage of UI box
+
+    //public Rect keepBoxUI;
+    //public Rect currentObjectBoxUI;
 
     public GameObject targetInteractable = null;
 
@@ -276,12 +285,18 @@ public class InteractControl : MonoBehaviour
         targetInteractable.transform.position = targetPosition;
         if (CheckIfOverLapWithKeepBox())
         {
-            targetInteractable.SetActive(false);
+            targetInteractable.GetComponent<Outline>().enabled = true;
         }
         else
         {
-
-            targetInteractable.SetActive(true);
+            if (CheckIfOverLapWithTrashBox())
+            {
+                targetInteractable.GetComponent<Outline>().enabled = true;
+            }
+            else
+            {
+                targetInteractable.GetComponent<Outline>().enabled = false;
+            }
         }
     }
 
@@ -292,11 +307,64 @@ public class InteractControl : MonoBehaviour
 
     private bool CheckIfOverLapWithKeepBox()
     {
-        //0 is max, 1 is min
-        Vector3[] result = new Vector3[2];
+        Vector2 minUIPoint = new Vector2(keepBoxUI_YPos_InPercentage, keepBoxUI_XPos_InPercentage);
+        Vector2 maxUIPoint = new Vector2(keepBoxUI_YPos_InPercentage + keepBoxUI_HeightPercentage, keepBoxUI_XPos_InPercentage + keepBoxUI_WidthPercentage);
 
+        //Vector2 tempx = new Vector2(minUIPoint.x*Screen.width, minUIPoint.y * Screen.height);
+        //Vector2 tempy = new Vector2(maxUIPoint.x * Screen.width, maxUIPoint.y * Screen.height);
+        //Debug.DrawLine(tempx, tempy, Color.red, 100000f);
+        // Step 2: Calculate the 3D object's bounding box in screen space
+        Bounds bounds = targetInteractable.GetComponent<MeshRenderer>().bounds;
+        Vector3[] corners = new Vector3[8];
+        corners[0] = bounds.min;
+        corners[1] = new Vector3(bounds.min.x, bounds.min.y, bounds.max.z);
+        corners[2] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
+        corners[3] = new Vector3(bounds.min.x, bounds.max.y, bounds.max.z);
+        corners[4] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
+        corners[5] = new Vector3(bounds.max.x, bounds.min.y, bounds.max.z);
+        corners[6] = new Vector3(bounds.max.x, bounds.max.y, bounds.min.z);
+        corners[7] = bounds.max;
+
+        Vector3 minScreenPoint = Camera.main.WorldToScreenPoint(corners[0]);
+        Vector3 maxScreenPoint = minScreenPoint;
+
+        for (int i = 1; i < corners.Length; i++)
+        {
+            Vector3 screenPoint = Camera.main.WorldToScreenPoint(corners[i]);
+            minScreenPoint = Vector3.Min(minScreenPoint, screenPoint);
+            maxScreenPoint = Vector3.Max(maxScreenPoint, screenPoint);
+        }
+
+        //Debug.DrawLine(minScreenPoint, maxScreenPoint, Color.green, 100000f);
+        // Step 3: Convert min and max screen points to percentages of the screen size
+        float objectMinXPercentage = minScreenPoint.x / Screen.width;
+        float objectMinYPercentage = minScreenPoint.y / Screen.height;
+        float objectMaxXPercentage = maxScreenPoint.x / Screen.width;
+        float objectMaxYPercentage = maxScreenPoint.y / Screen.height;
+
+        Vector2 minObjectPoint = new Vector2(objectMinXPercentage, objectMinYPercentage);
+        Vector2 maxObjectPoint = new Vector2(objectMaxXPercentage, objectMaxYPercentage);
+
+        if (IsAABBOverlap(minUIPoint, maxUIPoint, minObjectPoint, maxObjectPoint))
+        {
+            Debug.Log("The 3D object overlaps with the UI box!");
+            return true;
+        }
+        else
+        {
+            Debug.Log("The 3D object does not overlap with the UI box.");
+            return false;
+        }
+    }
+    private bool CheckIfOverLapWithTrashBox()
+    {
         // Step 1: Define the UI box in percentage-based screen space
-        Rect uiPercentageRect = new Rect(keepBoxUI_XPos_InPercentage, keepBoxUI_YPos_InPercentage, keepBoxUI_WidthPercentage, keepBoxUI_HeightPercentage);
+        Vector2 minUIPoint = new Vector2 (trashBoxUI_YPos_InPercentage, trashBoxUI_XPos_InPercentage);
+        Vector2 maxUIPoint = new Vector2(trashBoxUI_YPos_InPercentage + trashBoxUI_HeightPercentage, trashBoxUI_XPos_InPercentage + trashBoxUI_WidthPercentage);
+
+        //Vector2 tempx = new Vector2(minUIPoint.x * Screen.width, minUIPoint.y * Screen.height);
+        //Vector2 tempy = new Vector2(maxUIPoint.x * Screen.width, maxUIPoint.y * Screen.height);
+        //Debug.DrawLine(tempx, tempy, Color.red, 100000f);
 
         // Step 2: Calculate the 3D object's bounding box in screen space
         Bounds bounds = targetInteractable.GetComponent<MeshRenderer>().bounds;
@@ -321,40 +389,31 @@ public class InteractControl : MonoBehaviour
         }
 
         // Step 3: Convert min and max screen points to percentages of the screen size
+        //Debug.DrawLine(minScreenPoint, maxScreenPoint, Color.green, 100000f);
         float objectMinXPercentage = minScreenPoint.x / Screen.width;
         float objectMinYPercentage = minScreenPoint.y / Screen.height;
         float objectMaxXPercentage = maxScreenPoint.x / Screen.width;
         float objectMaxYPercentage = maxScreenPoint.y / Screen.height;
 
-        // Step 4: Create a percentage-based Rect for the object in screen space
-        Rect objectPercentageRect = new Rect(
-            objectMinXPercentage,
-            objectMinYPercentage,
-            objectMaxXPercentage - objectMinXPercentage,
-            objectMaxYPercentage - objectMinYPercentage
-        );
-        // Step 5: Check for overlap between the UI box and the object's bounding box in percentage-based screen space
-        if (uiPercentageRect.Overlaps(objectPercentageRect))
+        Vector2 minObjectPoint = new Vector2(objectMinXPercentage, objectMinYPercentage);
+        Vector2 maxObjectPoint = new Vector2(objectMaxXPercentage, objectMaxYPercentage);
+
+        if (IsAABBOverlap(minUIPoint, maxUIPoint, minObjectPoint, maxObjectPoint))
         {
-            Debug.Log("The 3D object overlaps with the UI box!");
+            Debug.Log("The 3D object overlaps with the trash box!");
             return true;
         }
         else
         {
-            Debug.Log("The 3D object does not overlap with the UI box.");
+            Debug.Log("The 3D object does not overlap with the trash box.");
             return false;
         }
     }
 
-    private void OnGUI()
+    private bool IsAABBOverlap(Vector2 UIMin, Vector2 UIMax, Vector2 ObjMin, Vector2 ObjMax)
     {
-
-
-        GUI.color = Color.green;
-        GUI.Box(uiPercentageRect, GUIContent.none);
-
-        GUI.color = Color.red;
-        GUI.Box(objectPercentageRect, GUIContent.none);
+        return UIMin.x < ObjMax.x && UIMax.x > ObjMin.x &&
+               UIMin.y < ObjMax.y && UIMax.y > ObjMin.y;
     }
 
 }
